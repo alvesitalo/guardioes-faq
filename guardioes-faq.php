@@ -1,8 +1,8 @@
 <?php
 /*
-    Plugin Name: FAQ do Guardiões
-    Plugin URI: https://github.com/alvesitalo
-    Description: Adiciona o FAQ ao Guardiões da Saúde, pode ser usado pelo site e pela REST API.
+    Plugin Name: Guardiões FAQ
+    Plugin URI: https://github.com/alvesitalo/guardioes-faq
+    Description: Adiciona o FAQ ao Guardiões da Saúde, permite ser usado pelo site e pela REST API.
     Version: 1.0
     Author: Ítalo Alves
     Author URI: https://github.com/alvesitalo
@@ -19,9 +19,7 @@ function create_post_type_faq() {
         'new_item'           => 'Nova pergunta',
         'all_items'          => 'Todas as perguntas',
         'view_item'          => 'Ver pergunta',
-        'search_items'       => 'Pesquisar perguntas',
-        'featured_image'     => 'Capa',
-        'set_featured_image' => 'Adicionar capa'
+        'search_items'       => 'Pesquisar perguntas'
     );
 
     $args = array(
@@ -30,7 +28,7 @@ function create_post_type_faq() {
         'public'            => true,
         'menu_position'     => 5,
         'menu_icon'         => 'dashicons-format-status',
-        'supports'          => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
+        'supports'          => array( 'title', 'editor', 'excerpt' ),
         'has_archive'       => true,
         'show_in_rest'      => true,
         'show_in_admin_bar' => true,
@@ -42,6 +40,6 @@ function create_post_type_faq() {
     register_post_type( 'faq', $args );
 }
 
-include('endpoints.php');
+include_once('endpoints.php');
 
 add_action( 'init', 'create_post_type_faq' );
